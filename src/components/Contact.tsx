@@ -51,7 +51,7 @@ export function Contact() {
                   GitHub
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/guilherme-kayam"
+                  href="https://www.linkedin.com/in/guilherme-kaynam"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors"
