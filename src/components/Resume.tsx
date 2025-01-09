@@ -1,6 +1,19 @@
-import React, { useRef } from 'react';
-import { Briefcase, GraduationCap, Award, Code2, MapPin, Phone, Mail, Download } from 'lucide-react';
-import html2pdf from 'html2pdf.js';
+import React, { useRef } from "react";
+import {
+  Briefcase,
+  GraduationCap,
+  Award,
+  Code2,
+  MapPin,
+  Phone,
+  Mail,
+  Download,
+  Github,
+  Linkedin,
+  Globe,
+  Languages,
+} from "lucide-react";
+import html2pdf from "html2pdf.js";
 
 export function Resume() {
   const resumeRef = useRef<HTMLDivElement>(null);
@@ -8,128 +21,246 @@ export function Resume() {
   const downloadPDF = () => {
     const element = resumeRef.current;
     const opt = {
-      margin: 1,
-      filename: 'curriculo-guilherme-kaynam.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      margin: [15, 15, 15, 15],
+      filename: "curriculo-guilherme-kaynam.pdf",
+      image: { type: "jpeg", quality: 1 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        logging: true,
+        letterRendering: true,
+      },
+      jsPDF: {
+        unit: "mm",
+        format: "a4",
+        orientation: "portrait",
+      },
     };
 
-    html2pdf().set(opt).from(element).save();
+    if (element) {
+      const clone = element.cloneNode(true) as HTMLElement;
+      clone.style.width = "210mm";
+      clone.style.padding = "20mm";
+      clone.style.backgroundColor = "white";
+
+      document.body.appendChild(clone);
+
+      html2pdf()
+        .set(opt)
+        .from(clone)
+        .save()
+        .then(() => {
+          document.body.removeChild(clone);
+        });
+    }
   };
 
   return (
     <section id="resume" className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">Currículo</h2>
-          <p className="mt-4 text-xl text-gray-600">Guilherme Kaynam de Lima Muniz</p>
-          <div className="mt-4 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-gray-600">
-            <span className="flex items-center whitespace-nowrap">
-              <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
-              Poá, SP
-            </span>
-            <span className="flex items-center whitespace-nowrap">
-              <Phone className="h-4 w-4 mr-2 flex-shrink-0" />
-              (11) 95232-6058
-            </span>
-            <span className="flex items-center whitespace-nowrap">
-              <Mail className="h-4 w-4 mr-2 flex-shrink-0" />
-              GuilhermeKaynam2006@gmail.com
-            </span>
-          </div>
+        <div className="text-center mb-8">
           <button
             onClick={downloadPDF}
-            className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
           >
             <Download className="h-5 w-5 mr-2" />
             Baixar PDF
           </button>
         </div>
 
-        <div ref={resumeRef} className="space-y-12">
-          {/* Experiência */}
-          <div>
-            <div className="flex items-center mb-6">
-              <Briefcase className="h-6 w-6 text-indigo-600 mr-2" />
-              <h3 className="text-2xl font-semibold text-gray-900">Experiência Profissional</h3>
+        <div ref={resumeRef} className="space-y-6 bg-white p-8">
+          {/* Cabeçalho */}
+          <div className="text-center border-b pb-6">
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+              Guilherme Kaynam de Lima Muniz
+            </h1>
+            <div className="flex flex-wrap justify-center items-center gap-4 text-gray-600">
+              <span className="flex items-center">
+                <MapPin className="h-4 w-4 mr-2" />
+                Poá, SP
+              </span>
+              <span className="flex items-center">
+                <Phone className="h-4 w-4 mr-2" />
+                (11) 95232-6058
+              </span>
+              <span className="flex items-center">
+                <Mail className="h-4 w-4 mr-2" />
+                GuilhermeKaynam2006@gmail.com
+              </span>
+              <a
+                href="https://github.com/GuilhermeKaynam"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center hover:text-indigo-600"
+              >
+                <Github className="h-4 w-4 mr-2" />
+                Github
+              </a>
+              <a
+                href="https://www.linkedin.com/in/guilherme-kaynam/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center hover:text-indigo-600"
+              >
+                <Linkedin className="h-4 w-4 mr-2" />
+                LinkedIn
+              </a>
             </div>
-            <div className="space-y-6">
+          </div>
+
+          {/* Resumo Profissional */}
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <Globe className="h-6 w-6 text-indigo-600 mr-2" />
+              <h2 className="text-2xl font-semibold text-gray-900">
+                Resumo Profissional
+              </h2>
+            </div>
+            <p className="ml-8 text-gray-600">
+              Sou desenvolvedor FullStack formado pelo bootcamp da Generation
+              Brasil, com experiência em Java, Spring, React e MySQL, criando
+              projetos completos como sistemas de e-commerce e gerenciamento de
+              serviços. Meu primeiro contato com programação foi aos 14 anos, e
+              desde então, desenvolvo habilidades técnicas e comportamentais
+              como proatividade, resolução de problemas e aprendizado rápido.
+              Estou em transição para o mercado de trabalho, pronto para aplicar
+              habilidades em projetos inovadores e de impacto.
+            </p>
+          </div>
+
+          {/* Experiência */}
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <Briefcase className="h-6 w-6 text-indigo-600 mr-2" />
+              <h2 className="text-2xl font-semibold text-gray-900">
+                Experiências Profissionais
+              </h2>
+            </div>
+            <div className="ml-8 space-y-6">
               <div>
-                <h4 className="text-lg font-semibold text-gray-900">Desenvolvedor Full Stack</h4>
-                <p className="text-gray-600">Freelancer • 2023 - Presente</p>
-                <ul className="mt-2 list-disc list-inside text-gray-600">
-                  <li>Desenvolvimento de sistemas web completos</li>
-                  <li>Criação de APIs RESTful</li>
-                  <li>Implementação de interfaces responsivas</li>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Hello Wordpress
+                </h3>
+                <p className="text-gray-600 mb-2">
+                  Desenvolvedor Front End • 03/2019 - 06/2020
+                </p>
+                <p className="text-gray-600 font-medium">
+                  Principais Responsabilidades:
+                </p>
+                <ul className="list-disc list-inside text-gray-600">
+                  <li>
+                    Desenvolvi e mantive websites responsivos para pequenos
+                    negócios utilizando WordPress e Elementor, melhorando a
+                    visibilidade online dos clientes
+                  </li>
                 </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Farmácia Drogabay Poá
+                </h3>
+                <div className="space-y-2">
+                  <div>
+                    <p className="text-gray-600">
+                      Jovem Aprendiz • 07/2023 - 12/2023
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-600">
+                      Auxiliar de Escritório • 01/2024 - 05/2024
+                    </p>
+                  </div>
+                  <p className="text-gray-600 font-medium">
+                    Principais Responsabilidades:
+                  </p>
+                  <ul className="list-disc list-inside text-gray-600">
+                    <li>
+                      Organizei e digitalizei mais de 1000 documentos,
+                      otimizando o tempo de recuperação de informações pela
+                      equipe administrativa.
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Educação */}
-          <div>
-            <div className="flex items-center mb-6">
+          <div className="space-y-4">
+            <div className="flex items-center">
               <GraduationCap className="h-6 w-6 text-indigo-600 mr-2" />
-              <h3 className="text-2xl font-semibold text-gray-900">Educação</h3>
+              <h2 className="text-2xl font-semibold text-gray-900">Educação</h2>
             </div>
-            <div className="space-y-6">
+            <div className="ml-8 space-y-4">
               <div>
-                <h4 className="text-lg font-semibold text-gray-900">Bootcamp Desenvolvedor Full Stack Java Jr.</h4>
-                <p className="text-gray-600">Generation Brasil • 2023</p>
-                <p className="mt-2 text-gray-600">
-                  Formação intensiva em desenvolvimento web com foco em Java, Spring Boot e React.
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Bootcamp - Desenvolvedor Full Stack
+                </h3>
+                <p className="text-gray-600">Generation Brasil • Cursando</p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Ensino Médio
+                </h3>
+                <p className="text-gray-600">
+                  E.E Batuira • Conclusão: 12/2023
                 </p>
               </div>
             </div>
           </div>
 
           {/* Habilidades */}
-          <div>
-            <div className="flex items-center mb-6">
+          <div className="space-y-4">
+            <div className="flex items-center">
               <Code2 className="h-6 w-6 text-indigo-600 mr-2" />
-              <h3 className="text-2xl font-semibold text-gray-900">Habilidades Técnicas</h3>
+              <h2 className="text-2xl font-semibold text-gray-900">
+                Habilidades Técnicas
+              </h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900">Frontend</h4>
-                <ul className="mt-2 text-gray-600">
-                  <li>React</li>
-                  <li>TypeScript</li>
-                  <li>HTML/CSS</li>
-                  <li>Tailwind CSS</li>
-                </ul>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900">Backend</h4>
-                <ul className="mt-2 text-gray-600">
-                  <li>Java</li>
-                  <li>Spring Boot</li>
-                  <li>Node.js</li>
-                  <li>RESTful APIs</li>
-                </ul>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900">Banco de Dados</h4>
-                <ul className="mt-2 text-gray-600">
-                  <li>MySQL</li>
-                  <li>PostgreSQL</li>
-                  <li>MongoDB</li>
-                </ul>
-              </div>
+            <div className="ml-8">
+              <p className="text-gray-600">
+                HTML, CSS, JavaScript, React, Bootstrap, JAVA, Spring, SQL, Git,
+                APIs REST, GPT-4
+              </p>
             </div>
           </div>
 
-          {/* Certificações */}
-          <div>
-            <div className="flex items-center mb-6">
-              <Award className="h-6 w-6 text-indigo-600 mr-2" />
-              <h3 className="text-2xl font-semibold text-gray-900">Certificações</h3>
+          {/* Idiomas */}
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <Languages className="h-6 w-6 text-indigo-600 mr-2" />
+              <h2 className="text-2xl font-semibold text-gray-900">Idiomas</h2>
             </div>
-            <div className="space-y-4">
+            <div className="ml-8">
+              <ul className="text-gray-600">
+                <li>Português - Nativo</li>
+                <li>Inglês - Básico</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Cursos e Certificações */}
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <Award className="h-6 w-6 text-indigo-600 mr-2" />
+              <h2 className="text-2xl font-semibold text-gray-900">
+                Cursos Extracurriculares & Certificações
+              </h2>
+            </div>
+            <div className="ml-8 space-y-4">
               <div>
-                <h4 className="text-lg font-semibold text-gray-900">Desenvolvedor Full Stack Java Jr.</h4>
-                <p className="text-gray-600">Generation Brasil • 2023</p>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Coletivo Online
+                </h3>
+                <p className="text-gray-600">
+                  Instituto Coca-Cola • Conclusão: 08/2024
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Trilha Digital Coders 24
+                </h3>
+                <p className="text-gray-600">Ada Tech • Conclusão: 06/2024</p>
               </div>
             </div>
           </div>
