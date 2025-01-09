@@ -1,5 +1,5 @@
-import React from "react";
-import { Code2 } from "lucide-react";
+import React from 'react';
+import { Code2 } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -10,10 +10,7 @@ export function Footer() {
           <span className="ml-2 text-xl font-bold">Guilherme Kaynam</span>
         </div>
         <div className="text-center text-gray-400">
-          <p>
-            &copy; {new Date().getFullYear()} Criado por Guilherme Kaynam, todos
-            os direitos reservados.
-          </p>
+          <p>&copy; {new Date().getFullYear()} Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

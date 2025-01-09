@@ -43,16 +43,16 @@ export function Projects() {
         "https://cdn.pixabay.com/photo/2016/01/08/01/53/gymer-1126999_960_720.jpg",
       technologies: ["React", "Node.js", "MySQL", "CSS", "Typescript"],
       github: "https://github.com/GuilhermeKaynam/FrontEnd-FitPlanner",
-      demo: "https://fit-planner-dev.vercel.app/login",
+      demo: "https://fit-planner-dev.vercel.app/",
     },
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === projects.length - 2 ? 0 : prev + 1));
+    setCurrentSlide((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? projects.length - 2 : prev - 1));
+    setCurrentSlide((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
   };
 
   return (
@@ -65,51 +65,63 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative max-w-full overflow-hidden">
           <div
-            className="flex gap-8 transition-transform duration-300 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 50}%)` }}
+            className="flex transition-transform duration-300 ease-in-out"
+            style={{
+              transform: `translateX(-${currentSlide * (100 / projects.length)}%)`,
+              width: `${projects.length * 100}%`,
+            }}
           >
             {projects.map((project) => (
               <div
                 key={project.title}
-                className="bg-white rounded-lg shadow-lg overflow-hidden min-w-[calc(50%-1rem)] flex-shrink-0"
+                className="w-full"
+                style={{ width: `${100 / projects.length}%` }}
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex space-x-4">
-                    <a
-                      href={project.github}
-                      className="inline-flex items-center text-gray-600 hover:text-gray-900"
-                    >
-                      <Github className="h-5 w-5 mr-2" />
-                      GitHub
-                    </a>
-                    <a
-                      href={project.demo}
-                      className="inline-flex items-center text-gray-600 hover:text-gray-900"
-                    >
-                      <ExternalLink className="h-5 w-5 mr-2" />
-                      Demo
-                    </a>
+                <div className="mx-4">
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex space-x-4">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-gray-600 hover:text-gray-900"
+                        >
+                          <Github className="h-5 w-5 mr-2" />
+                          GitHub
+                        </a>
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-gray-600 hover:text-gray-900"
+                        >
+                          <ExternalLink className="h-5 w-5 mr-2" />
+                          Demo
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -118,14 +130,14 @@ export function Projects() {
 
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
             aria-label="Previous project"
           >
             <ChevronLeft className="h-6 w-6 text-gray-600" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
             aria-label="Next project"
           >
             <ChevronRight className="h-6 w-6 text-gray-600" />

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Mail, Phone, Github, Linkedin } from 'lucide-react';
+import React from "react";
+import { Mail, Phone, Github, Linkedin } from "lucide-react";
 
 export function Contact() {
   return (
@@ -15,13 +15,21 @@ export function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6 order-2 md:order-1">
             <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Informações de contato</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Informações de contato
+              </h3>
               <div className="space-y-4">
-                <a href="mailto:guilhermekaconsutorias@gmail.com" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors break-all">
+                <a
+                  href="mailto:guilhermekaconsutorias@gmail.com"
+                  className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors break-all"
+                >
                   <Mail className="h-5 w-5 mr-2 flex-shrink-0" />
                   guilhermekaconsutorias@gmail.com
                 </a>
-                <a href="tel:+5511999999999" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors">
+                <a
+                  href="tel:+5511952326058"
+                  className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors"
+                >
                   <Phone className="h-5 w-5 mr-2 flex-shrink-0" />
                   +55 (11) 95232-6058
                 </a>
@@ -29,13 +37,25 @@ export function Contact() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Redes sociais</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Redes sociais
+              </h3>
               <div className="space-y-4">
-                <a href="https://github.com/guilhermekayam" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors">
+                <a
+                  href="https://github.com/guilhermekaynam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors"
+                >
                   <Github className="h-5 w-5 mr-2 flex-shrink-0" />
                   GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/guilherme-kayam" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors">
+                <a
+                  href="https://www.linkedin.com/in/guilherme-kayam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors"
+                >
                   <Linkedin className="h-5 w-5 mr-2 flex-shrink-0" />
                   LinkedIn
                 </a>

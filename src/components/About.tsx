@@ -58,12 +58,11 @@ export function About() {
               crescer e contribuir com soluções que fazem a diferença.
             </p>
           </div>
-          <div>
+          <div className="flex justify-center md:justify-start">
             <img
-              src="./IMG_2895.jpeg"
+              src="./public/IMG_2895.jpeg"
               alt="Workspace"
-              className="rounded-lg shadow-lg"
-              style={{ marginLeft: "200px", width: "300px", height: "auto" }}
+              className="rounded-lg shadow-lg w-full max-w-md h-auto"
             />
           </div>
         </div>
