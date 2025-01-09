@@ -23,7 +23,7 @@ export function About() {
   return (
     <section id="about" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 reveal">
           <h2 className="text-3xl font-bold text-gray-900">Sobre Mim</h2>
           <p className="mt-4 text-xl text-gray-600">
             Desenvolvedor apaixonado por criar soluções inovadoras
@@ -31,7 +31,7 @@ export function About() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div>
+          <div className="reveal delay-200">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               Minha História
             </h3>
@@ -58,9 +58,9 @@ export function About() {
               crescer e contribuir com soluções que fazem a diferença.
             </p>
           </div>
-          <div className="flex justify-center md:justify-start">
+          <div className="flex justify-center md:justify-start reveal delay-400">
             <img
-              src="./public/IMG_2895.jpeg"
+              src="./IMG_2895.jpeg"
               alt="Workspace"
               className="rounded-lg shadow-lg w-full max-w-md h-auto"
             />
@@ -68,8 +68,13 @@ export function About() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skills.map((skill) => (
-            <div key={skill.name} className="p-6 bg-gray-50 rounded-lg">
+          {skills.map((skill, index) => (
+            <div
+              key={skill.name}
+              className={`p-6 bg-gray-50 rounded-lg reveal delay-${
+                index * 200
+              }`}
+            >
               <skill.icon className="h-8 w-8 text-indigo-600 mb-4" />
               <h4 className="text-xl font-semibold text-gray-900 mb-2">
                 {skill.name}

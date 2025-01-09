@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Code2, Mail, Github, Linkedin, MessageSquare, ScrollText, User, Briefcase, FolderGit2, ArrowUp } from 'lucide-react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Projects } from './components/Projects';
-import { Services } from './components/Services';
-import { Contact } from './components/Contact';
-import { Resume } from './components/Resume';
-import { Footer } from './components/Footer';
+import React, { useState, useEffect } from "react";
+import { ArrowUp } from "lucide-react";
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { About } from "./components/About";
+import { Projects } from "./components/Projects";
+import { Services } from "./components/Services";
+import { Contact } from "./components/Contact";
+import { Resume } from "./components/Resume";
+import { Footer } from "./components/Footer";
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -17,12 +17,33 @@ export default function App() {
       setShowScrollTop(window.scrollY > 400);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleReveal = () => {
+      const reveals = document.querySelectorAll(".reveal");
+
+      reveals.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleReveal);
+
+    // Initial check for elements
+    handleReveal();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleReveal);
+    };
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -37,7 +58,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      
+
       {showScrollTop && (
         <button
           onClick={scrollToTop}
