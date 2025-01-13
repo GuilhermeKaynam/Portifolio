@@ -196,7 +196,9 @@ export function Resume() {
                 <h3 className="text-lg font-semibold text-gray-900">
                   Bootcamp - Desenvolvedor Full Stack
                 </h3>
-                <p className="text-gray-600">Generation Brasil • Cursando</p>
+                <p className="text-gray-600">
+                  Generation Brasil • Conclusão: 1/2024
+                </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">

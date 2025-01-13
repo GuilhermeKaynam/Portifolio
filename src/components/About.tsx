@@ -60,7 +60,7 @@ export function About() {
           </div>
           <div className="flex justify-center md:justify-start reveal delay-400">
             <img
-              src="./IMG_2895.jpeg"
+              src="./Minha-foto.jpeg"
               alt="Workspace"
               className="rounded-lg shadow-lg w-full max-w-md h-auto"
             />
