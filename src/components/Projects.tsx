@@ -56,11 +56,16 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-16 bg-gray-50">
+    <section
+      id="projects"
+      className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">Projetos</h2>
-          <p className="mt-4 text-xl text-gray-600">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Projetos
+          </h2>
+          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
             Conheça alguns dos projetos que desenvolvi
           </p>
         </div>
@@ -69,7 +74,9 @@ export function Projects() {
           <div
             className="flex transition-transform duration-300 ease-in-out"
             style={{
-              transform: `translateX(-${currentSlide * (100 / projects.length)}%)`,
+              transform: `translateX(-${
+                currentSlide * (100 / projects.length)
+              }%)`,
               width: `${projects.length * 100}%`,
             }}
           >
@@ -80,22 +87,24 @@ export function Projects() {
                 style={{ width: `${100 / projects.length}%` }}
               >
                 <div className="mx-4">
-                  <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full transition-colors duration-200">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover"
+                      className="w-full h-48 object-cover dark:opacity-80"
                     />
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 mb-4">{project.description}</p>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4">
+                        {project.description}
+                      </p>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
+                            className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm"
                           >
                             {tech}
                           </span>
@@ -106,7 +115,7 @@ export function Projects() {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-gray-600 hover:text-gray-900"
+                          className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                         >
                           <Github className="h-5 w-5 mr-2" />
                           GitHub
@@ -115,7 +124,7 @@ export function Projects() {
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-gray-600 hover:text-gray-900"
+                          className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                         >
                           <ExternalLink className="h-5 w-5 mr-2" />
                           Demo
@@ -130,17 +139,17 @@ export function Projects() {
 
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-700 transition-colors"
             aria-label="Previous project"
           >
-            <ChevronLeft className="h-6 w-6 text-gray-600" />
+            <ChevronLeft className="h-6 w-6 text-gray-600 dark:text-gray-300" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-700 transition-colors"
             aria-label="Next project"
           >
-            <ChevronRight className="h-6 w-6 text-gray-600" />
+            <ChevronRight className="h-6 w-6 text-gray-600 dark:text-gray-300" />
           </button>
         </div>
       </div>

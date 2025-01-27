@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { ArrowUp } from "lucide-react";
+import {
+  Code2,
+  Mail,
+  Github,
+  Linkedin,
+  MessageSquare,
+  ScrollText,
+  User,
+  Briefcase,
+  FolderGit2,
+  ArrowUp,
+} from "lucide-react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -33,7 +44,6 @@ export default function App() {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("scroll", handleReveal);
 
-    // Initial check for elements
     handleReveal();
 
     return () => {
@@ -47,7 +57,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
       <Header />
       <main>
         <Hero />
@@ -62,7 +72,7 @@ export default function App() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 animate-fade-in"
+          className="fixed bottom-8 right-8 p-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 animate-fade-in dark:bg-indigo-500 dark:hover:bg-indigo-600"
           aria-label="Voltar ao topo"
         >
           <ArrowUp className="h-6 w-6" />
