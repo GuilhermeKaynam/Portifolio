@@ -65,7 +65,7 @@ export function About() {
           </div>
           <div className="flex justify-center md:justify-start reveal delay-400">
             <img
-              src="https://jujunatrip.com/wp-content/uploads/2021/08/dji_0982.jpg"
+              src="./Minha-foto.jpeg"
               alt="Workspace"
               className="rounded-lg shadow-lg w-full max-w-md h-auto dark:opacity-80"
             />
